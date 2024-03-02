@@ -13,6 +13,7 @@ pipeline {
             
         stage ('Build and Push Image') {
             steps {
+                 sh 'printenv'
                  withDockerRegistry([credentialsId: 'docker-hub', url: ""]) {
                    sh 'docker build -t ${REPOSITORY_TAG} .'
                    sh 'docker push ${REPOSITORY_TAG}'          
